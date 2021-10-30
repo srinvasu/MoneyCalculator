@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<script src="C:/WebApp/MonthlyIncome/script/controller.js"></script>
+
+<body style = " background: url('C:/WebApp/MonthlyIncome/img/background.jpg') no-repeat no-repeat center center fixed;
+-webkit-background-size: cover;
+-moz-background-size: cover;
+background-size: cover;
+-o-background-size: cover;">
+
+<div ng-app="myApp" ng-Controller="myController" class="has-bg-img bg-purple bg-blend-overlay">
+  
+    <h1 class="text-center">INCOME & EXPENSE CALCULATOR</h1>
+
+    <table class = "table">
+        <tr> 
+            <td><input  type="date" class="form-control" name = "InDt" ng-model="IncDate"  placeholder="enter income date" required/></td>  
+            <td><input type="text" class="form-control" ng-model="DtOfInc"  placeholder="details of income" /></td>
+            <td><input type="number" class="form-control" ng-model="IncAmount" placeholder=" income amount" /></td> 
+            <td><input type="date" class="form-control" ng-model="ExpDate"  /></td> 
+            <td><input type="text" class="form-control" ng-model="DtOfExp"  placeholder="details of Expenses"   /></td>
+            <td><input type="number" class="form-control" ng-model="ExpAmount" placeholder="Expense amount"     /></td>
+            <td><input type="button" class="btn" ng-model="addRowButton"  ng-click="addRow()"  value="calculate here" ng-disabled = "IsDisabled" /></td>
+           
+        </tr>
+    </table>
+    <table class = "table" >
+        <div ng-show = "addRowButton"> 
+        <tr>
+            <th><em>Income Date</em></th>
+            <th><em>Detail Of Income</em></th>
+            <th><em>Income</em></th>
+            <th><em>Expense Date</em></th>
+            <th><em>Detail Of Expense</em></th>
+            <th><em>Expenses</em></th>
+        </tr>
+        </div>
+        <tbody ng-repeat="Inc in IncArray" >
+           
+            <tr class="lead">
+                <td>{{Inc.IncDate}}</td>
+                <td>{{Inc.DtOfInc}}</td>
+                <td>{{Inc.IncAmount}}</td>
+                <td>{{Inc.ExpDate}}</td>
+                <td>{{Inc.DtOfExp}}</td>
+                <td>{{Inc.ExpAmount}}</td>
+                <!--
+                <td><input  type="text"  name = "InDt" ng-model="Inc.IncDate" ng-change="typeChange()"  required/></td>  
+                <td>   <input type="text" ng-model="Inc.DtOfInc"  ng-change="typeChange()" /></td>
+                <td><input type="text" ng-model="Inc.IncAmount"  ng-change="IncSum(IncAmount) "/></td> 
+                <td><input type="text" ng-model="Inc.ExpDate"  ng-change="typeChange()" /></td> 
+                <td><input type="text" ng-model="Inc.DtOfExp"  ng-change="typeChange()" /></td>
+                <td><input type="text" ng-model="Inc.ExpAmount"   ng-change="ExpSum(ExpAmount)" /></td>
+                <td><input type="button"  ng-click="Remove($index)" value="Remove"  ng-disabled="!IncDate" /></td>
+                -->
+            </tr>
+        </tbody> 
+          
+    </table>
+    <table class = "table">
+        <tr class="lead">    
+            <td><label ><stron><em>TotalIncome : </em></stron></label> {{ total1 }} </td>
+            <td><label><stron><em>TotalExpense : </em></stron></label> {{Exptotal1}}</td>
+        </tr>
+    </table>
+ 
+</div>
+
+</body>
+</html>
